@@ -5,7 +5,7 @@
 npm install
 npm start
 ```
-- You ahve to change MongoDB Url to your own one. Currently, it is:
+- You have to change MongoDB Url to your own one. Currently, it is:
 
 ```
 const MONGODB_URI =
