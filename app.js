@@ -12,7 +12,8 @@ const multer = require("multer");
 const errorController = require("./controllers/error");
 const User = require("./models/user");
 
-const MONGODB_URI = "";
+const MONGODB_URI =
+  "mongodb+srv://junyong:Sodapop1324!@cluster0.gngx2.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
 
 const app = express();
 const store = new MongoDBStore({
