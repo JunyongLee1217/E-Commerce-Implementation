@@ -39,6 +39,6 @@ Sign up with your email and password. Then you will be introduced to the login p
 <img src="pageImages/OrderResult.png"/>
 
 ### Invoice - pdf
-<img src="pageImages/invoice.png"/>
+<img src="pageImages/Invoice.png"/>
 
 
