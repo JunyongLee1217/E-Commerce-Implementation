@@ -1,5 +1,5 @@
 const path = require("path");
-
+const dotenv = require("dotenv");
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
@@ -8,14 +8,12 @@ const MongoDBStore = require("connect-mongodb-session")(session);
 const csrf = require("csurf");
 const flash = require("connect-flash");
 const multer = require("multer");
-
 const errorController = require("./controllers/error");
 const User = require("./models/user");
-
-const MONGODB_URI =
-  "mongodb+srv://junyong:Sodapop1324!@cluster0.gngx2.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
-
+dotenv.config();
+const MONGODB_URI = process.env.MONGODB_URI;
 const app = express();
+
 const store = new MongoDBStore({
   uri: MONGODB_URI,
   collection: "sessions",
@@ -100,8 +98,6 @@ app.get("/500", errorController.get500);
 app.use(errorController.get404);
 
 app.use((error, req, res, next) => {
-  // res.status(error.httpStatusCode).render(...);
-  // res.redirect('/500');
   res.status(500).render("500", {
     pageTitle: "Error!",
     path: "/500",
@@ -110,8 +106,9 @@ app.use((error, req, res, next) => {
 });
 
 mongoose
-  .connect(MONGODB_URI)
+  .connect(MONGODB_URI, { useUnifiedTopology: true })
   .then((result) => {
+    console.log("mongodb running");
     app.listen(3000);
   })
   .catch((err) => {
